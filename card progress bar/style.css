@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section {
+    position: relative;
+    background-color: rgb(33, 8, 56);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+section::after {
+    content: "";
+    width: 100%;
+    height: 50px;
+    background-color: rgb(133, 14, 113);
+    position: absolute;
+    left: 0;
+    top: 45%;
+
+}
+
+.container {
+
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container .card {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    margin: 20px 20px 60px;
+    /* space btween card and container ....top20 l+r20 bottom60 */
+
+    z-index: 12;
+}
+
+.card .box {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    z-index: 12;
+}
+
+.box .percent {
+    position: relative;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    z-index: 100;
+}
+
+.percent .number {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.number h2 {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.number h2 span {
+
+    font-size: 24px;
+}
+
+.card .text {
+    position: absolute;
+    bottom: -42px;
+    left: 50%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    padding: 30px 20px 10px;
+    transform: translateX(-50%);
+    /* to move it 50% left */
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    font: 18px;
+    pointer-events: none;
+    /* no any effect on pointer */
+    transition: bottom .5s, transform .5s, z-index 0s, padding .5s;
+    transition-delay: .5s, 0s, .5s, .5s;
+    z-index: 1;
+}
+
+.card:nth-child(1) .text {
+    background: #ff0461;
+}
+
+.card:nth-child(2) .text {
+    background: #2db2ff;
+}
+
+.card:nth-child(3) .text {
+    background: #18d539;
+}
+
+.card:hover .text {
+    bottom: -70px;
+    z-index: 13;
+    /* to show at the top of the card */
+    transform: translateX(-50%) translateY(-50px);
+    /* center in x and move to oben with y 50px */
+    transition-delay: 0s, .5s, .5s, 0s;
+    padding: 10px 20px 10px;
+}
+
+svg {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    /*نصف القطؤ 70 بالتالي العرض 150 بيزيد عشرة نعمل للدائر*/
+    /* storke بمقدار 10 بكسل وبالتالي صارو 150 */
+}
+
+svg circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 10;
+    stroke: rgba(255, 255, 255, 0.1);
+    transform: translate(5px, 5px);
+    stroke-linecap: round;
+}
+
+svg circle:nth-child(2) {
+    stroke-dasharray: 440px;
+    /* this vale mean kein dash in circle */
+    stroke-dashoffset: 440;
+    /* this mean length of cut from circle */
+    stroke: rgba(255, 255, 255, 1);
+}
+
+.card:nth-child(1) svg circle:nth-child(2) {
+    stroke-dashoffset: calc(440px - (440px*90)/100);
+}
+
+.card:nth-child(2) svg circle:nth-child(2) {
+    stroke-dashoffset: calc(440px - (440px*60)/100);
+}
+
+.card:nth-child(3) svg circle:nth-child(2) {
+    stroke-dashoffset: calc(440px - (440px*80)/100);
+}
